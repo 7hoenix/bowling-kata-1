@@ -5,6 +5,9 @@
 (defn- roll-many[game number-of-rolls score-of-each-roll]
   (reduce (fn [game _] (game/roll game score-of-each-roll)) game (range number-of-rolls)))
 
+(defn- roll-spare [g]
+   (roll-many g 2 5))
+
 (deftest bowling-game
   (let [g (game/new-game)]
   (testing "test gutter game"
@@ -22,8 +25,7 @@
   (testing "test roll one spare"
     (is (= 16
            (-> g
-               (game/roll 5)
-               (game/roll 5)
+               (roll-spare)
                (game/roll 3)
                (roll-many 17 0)
                (game/score)))))))
