@@ -8,6 +8,9 @@
 (defn- roll-spare [g]
    (roll-many g 2 5))
 
+(defn- roll-strike [g]
+  (game/roll g 10))
+
 (deftest bowling-game
   (let [g (game/new-game)]
   (testing "test gutter game"
@@ -33,8 +36,14 @@
   (testing "test one strike"
     (is (= 24
            (-> g
-               (game/roll 10)
+               (roll-strike)
                (game/roll 3)
                (game/roll 4)
                (roll-many 16 0)
+               (game/score)))))
+
+  (testing "perfect game"
+    (is (= 300
+           (-> g
+               (roll-many 12 10)
                (game/score)))))))
