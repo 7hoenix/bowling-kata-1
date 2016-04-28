@@ -17,9 +17,13 @@
     (is (= 20
            (-> g
                (roll-many 20 1)
-               (game/score)))))))
+               (game/score)))))
  
-  ; (testing "test roll one spare"
-  ;  (let [game (game/new-game)
-  ;        score (roll-many 3 5)]
-  ;    (is (= score 20))))))
+  (testing "test roll one spare"
+    (is (= 16
+           (-> g
+               (game/roll 5)
+               (game/roll 5)
+               (game/roll 3)
+               (roll-many 17 0)
+               (game/score)))))))
