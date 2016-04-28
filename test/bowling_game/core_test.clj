@@ -28,4 +28,13 @@
                (roll-spare)
                (game/roll 3)
                (roll-many 17 0)
+               (game/score)))))
+
+  (testing "test one strike"
+    (is (= 24
+           (-> g
+               (game/roll 10)
+               (game/roll 3)
+               (game/roll 4)
+               (roll-many 16 0)
                (game/score)))))))
