@@ -2,7 +2,10 @@
   (:require [clojure.test :refer :all]
             [bowling-game.core :as game]))
 
-(deftest gutter-game
-  (testing "should be 0 if you never knock over a pin"
+(deftest bowling-game
+  (testing "test gutter game"
     (let [score (reduce game/roll 0 (take 20 (repeat 0)))]
-      (is (= score 0)))))
+      (is (= score 0))))
+  (testing "test all ones"
+    (let [score (reduce game/roll 0 (take 20 (repeat 1)))]
+      (is (= score 20)))))

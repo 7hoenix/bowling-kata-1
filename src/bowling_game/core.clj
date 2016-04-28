@@ -1,3 +1,4 @@
 (ns bowling-game.core)
 
-(defn roll [score pins] 0)
+(defn roll [score pins] 
+  (+ score pins))
